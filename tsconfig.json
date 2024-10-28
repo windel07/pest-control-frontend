@@ -25,6 +25,9 @@
       ],
       "@auth/*": [
         "src/components/auth/*"
+      ],
+      "@composables/*": [
+        "src/composables/*"
       ]
     }
   }
