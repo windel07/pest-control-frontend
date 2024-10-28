@@ -1,5 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppHeader from '@components/app/header/AppHeader.vue';
+import AppFooter from '@components/app/footer/AppFooter.vue';
+</script>
 
 <template>
-  <button class="btn btn-primary">test</button>
+  <AppHeader />
+  <main>
+    <RouterView />
+  </main>
+  <AppFooter />
 </template>
