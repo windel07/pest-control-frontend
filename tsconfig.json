@@ -16,6 +16,15 @@
       ],
       "@modules/*": [
         "src/modules/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@app/*": [
+        "src/components/app/*"
+      ],
+      "@auth/*": [
+        "src/components/auth/*"
       ]
     }
   }
