@@ -3,4 +3,10 @@ import '@assets/scss/main.scss';
 import { createApp } from 'vue';
 import App from './App.vue';
 
-createApp(App).mount('#app');
+import { registerModules } from '@modules';
+
+const app = createApp(App);
+
+registerModules(app);
+
+app.mount('#app');

@@ -1,4 +1,7 @@
 {
+  "include": [
+    "./typed-router.d.ts"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -10,6 +13,9 @@
       ],
       "@/*": [
         "src/*"
+      ],
+      "@modules/*": [
+        "src/modules/*"
       ]
     }
   }
