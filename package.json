@@ -11,6 +11,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "nanoid": "^5.0.7",
     "sweetalert2": "^11.14.4",
     "vee-validate": "^4.14.6",
