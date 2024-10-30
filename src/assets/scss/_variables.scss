@@ -1,0 +1,39 @@
+// Options
+
+$enable-cssgrid: true;
+$enable-negative-margins: true;
+
+$bootstrap-icons-font-dir: '@/../node_modules/bootstrap-icons/font/fonts';
+
+// Typography
+
+$font-family-base: 'Poppins', sans-serif;
+$font-size-base: 0.85rem;
+
+// Components
+
+$box-shadow-color: #dddfee !default;
+
+$box-shadow: 0 8px 16px $box-shadow-color;
+$box-shadow-sm: 0 2px 4px $box-shadow-color;
+$box-shadow-lg: 0 16px 32px $box-shadow-color;
+$box-shadow-inset: inset 0 1px 2px $box-shadow-color;
+
+// Forms
+
+$form-label-font-size: 15px;
+
+// Breadcrumbs
+
+$breadcrumb-divider: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8'><path d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='#6c757d'/></svg>");
+
+// Modals
+
+$modal-content-border-width: 0;
+
+// Carousel
+
+$carousel-indicator-width: 12px;
+$carousel-indicator-height: 12px;
+
+$carousel-indicator-spacer: 6px;
