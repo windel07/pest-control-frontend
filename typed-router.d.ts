@@ -19,6 +19,14 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
+    '/dashboard/': RouteRecordInfo<'/dashboard/', '/dashboard', Record<never, never>, Record<never, never>>,
+    '/dashboard/farmers/': RouteRecordInfo<'/dashboard/farmers/', '/dashboard/farmers', Record<never, never>, Record<never, never>>,
+    '/dashboard/records/': RouteRecordInfo<'/dashboard/records/', '/dashboard/records', Record<never, never>, Record<never, never>>,
+    '/dashboard/records/[id]': RouteRecordInfo<'/dashboard/records/[id]', '/dashboard/records/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    '/dashboard/records/components/RecordsTable': RouteRecordInfo<'/dashboard/records/components/RecordsTable', '/dashboard/records/components/RecordsTable', Record<never, never>, Record<never, never>>,
+    '/dashboard/records/components/RecordsTableDeleteButton': RouteRecordInfo<'/dashboard/records/components/RecordsTableDeleteButton', '/dashboard/records/components/RecordsTableDeleteButton', Record<never, never>, Record<never, never>>,
+    '/dashboard/records/create': RouteRecordInfo<'/dashboard/records/create', '/dashboard/records/create', Record<never, never>, Record<never, never>>,
+    '/dashboard/staffs/': RouteRecordInfo<'/dashboard/staffs/', '/dashboard/staffs', Record<never, never>, Record<never, never>>,
     '/login': RouteRecordInfo<'/login', '/login', Record<never, never>, Record<never, never>>,
   }
 }
