@@ -1,7 +1,7 @@
 import type { User } from '@types';
 
-export interface FarmerCreateFormSchema extends Omit<User, 'id'> {}
+export interface StaffCreateFormSchema extends Omit<User, 'id'> {}
 
-export type FarmerCreateFormEmits = {
+export type StaffCreateFormEmits = {
   success: [payload?: any];
 };

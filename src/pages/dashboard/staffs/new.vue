@@ -9,6 +9,13 @@ const router = useRouter();
 </script>
 
 <template>
+  <div class="mt-3 mb-1">
+    <RouterLink to="/dashboard/staffs/" class="small lh-1 d-inline-flex">
+      <i class="bi bi-arrow-left me-2"></i>
+      <span>Return</span>
+    </RouterLink>
+  </div>
+
   <DashboardPageHeader title="New Staff" sub-title="Staffs" />
 
   <div class="card border-0 shadow">

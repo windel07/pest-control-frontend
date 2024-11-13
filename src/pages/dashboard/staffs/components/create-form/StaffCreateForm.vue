@@ -5,16 +5,16 @@ import { useToast } from '@composables';
 import { UserService } from '@services';
 
 import type {
-  FarmerCreateFormSchema,
-  FarmerCreateFormEmits,
-} from './FarmerCreateForm.types';
-import { validationSchema } from './FarmerCreateForm.schemas';
+  StaffCreateFormSchema,
+  StaffCreateFormEmits,
+} from './StaffCreateForm.types';
+import { validationSchema } from './StaffCreateForm.schemas';
 
 const { showToast } = useToast();
 
-const emits = defineEmits<FarmerCreateFormEmits>();
+const emits = defineEmits<StaffCreateFormEmits>();
 
-const { handleSubmit } = useForm<FarmerCreateFormSchema>({
+const { handleSubmit } = useForm<StaffCreateFormSchema>({
   validationSchema,
   initialValues: {
     role: 'staff',
@@ -28,7 +28,7 @@ const onSubmit = handleSubmit(async (formData) => {
 
   if (!results) return;
 
-  showToast(detail.replace('User', 'Farmer'), 'success');
+  showToast(detail.replace('User', 'Staff'), 'success');
 
   emits('success');
 });
