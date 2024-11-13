@@ -1,55 +1,69 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useDebounceFn } from '@vueuse/core';
 
+import type { Record } from '@types';
 import { RecordService } from '@services';
+import { MunicipalityDropdown, BarangayDropdown } from '@components/misc';
 
 import RecordsTableDeleteButton from './RecordsTableDeleteButton.vue';
 
-const search = ref<string>('ewq');
+const isFetching = ref<boolean>(false);
+
+const search = ref<string>('');
+const city = ref<string | undefined>(undefined);
+const barangay = ref<string | undefined>(undefined);
+
+const records = ref<Record[]>([]);
+
 const page = ref<number>(1);
+const perPage = ref<number>(5);
+const total = ref<number>(0);
 
-const {
-  isFetching,
-  data,
-  execute: reFetch,
-} = RecordService.list({
-  page: page.value,
-  search: search.value,
+const parameters = computed<string>(() => {
+  return Object.entries({
+    search: search.value,
+    city: city.value,
+    barangay: barangay.value,
+    page: page.value,
+    per_page: perPage.value,
+  })
+    .map(([key, value]) => `${key}=${value || ''}`)
+    .join('&');
 });
 
-const items = computed(() => {
-  const { data: records } = data.value || {};
+const handleFetch = async () => {
+  isFetching.value = true;
 
-  if (!records) return [];
+  const { data } = await RecordService.list(parameters);
+  const { data: results } = data.value || {};
 
-  return records.data;
-});
+  isFetching.value = false;
 
-const perPage = computed<number>(() => {
-  const { data: records } = data.value || {};
+  records.value = results.data || [];
 
-  if (!records) return 0;
+  page.value = results.current_page || 1;
+  perPage.value = results.per_page || 5;
+  total.value = results.total || 0;
+};
 
-  return records.per_page || 1;
-});
-
-const total = computed<number>(() => {
-  const { data: records } = data.value || {};
-
-  if (!records) return 0;
-
-  return records.total || 1;
-});
-
-const onSearch = useDebounceFn(reFetch, 500);
+watch(
+  parameters,
+  useDebounceFn(() => handleFetch(), 500),
+  { immediate: true },
+);
 </script>
 
 <template>
   <div class="mb-4 d-flex align-items justify-content-between">
-    <slot name="top-bar:left">
-      <BaseInput name="search" placeholder="Search" @input="onSearch" />
-    </slot>
+    <div class="d-flex align-items-center column-gap-2">
+      <BaseInput v-model="search" name="search" placeholder="Search" />
+      <MunicipalityDropdown
+        v-model="city"
+        @input="() => (barangay = undefined)"
+      />
+      <BarangayDropdown v-model="barangay" :municipality="city" />
+    </div>
 
     <slot name="top-bar:right" />
   </div>
@@ -68,24 +82,27 @@ const onSearch = useDebounceFn(reFetch, 500);
         </tr>
       </thead>
       <tbody class="table-group-divider">
-        <template v-if="!!items.length">
-          <tr v-for="item in items">
-            <td>{{ item.pest_type }}</td>
-            <td>{{ item.soil_type }}</td>
-            <td>{{ item.city }}</td>
-            <td>{{ item.barangay }}</td>
+        <template v-if="!!records.length">
+          <tr v-for="record in records">
+            <td>{{ record.pest_type }}</td>
+            <td>{{ record.soil_type }}</td>
+            <td>{{ record.city }}</td>
+            <td>{{ record.barangay }}</td>
             <td></td>
-            <td>{{ item.created_at }}</td>
+            <td>{{ record.created_at }}</td>
             <td class="position-sticky end-0">
               <div class="d-flex align-items-center justify-content-center">
                 <RouterLink
-                  :to="`/dashboard/records/${item.id}`"
+                  :to="`/dashboard/records/${record.id}`"
                   class="btn btn-link px-2"
                 >
                   <i class="bi bi-pencil"></i>
                 </RouterLink>
 
-                <RecordsTableDeleteButton :id="item.id" @success="reFetch" />
+                <RecordsTableDeleteButton
+                  :id="record.id"
+                  @success="handleFetch"
+                />
               </div>
             </td>
           </tr>
@@ -95,7 +112,7 @@ const onSearch = useDebounceFn(reFetch, 500);
         </tr>
       </tbody>
     </table>
-
-    <BasePagination v-model="page" :batch="perPage" :total="total" />
   </div>
+
+  <BasePagination v-model="page" :per-page="perPage" :total="total" />
 </template>
