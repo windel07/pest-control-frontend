@@ -12,9 +12,9 @@ const options = computed<Record<string, string>>(() =>
 </script>
 
 <template>
-  <BaseSelect :options="options" name="city" label="Municipality">
+  <BaseSelect :options="options" name="city">
     <template v-slot:first>
-      <option :value="undefined" disabled>Select Municipality</option>
+      <option :value="undefined">Select Municipality</option>
     </template>
   </BaseSelect>
 </template>
