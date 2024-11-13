@@ -1,15 +1,19 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
 import DashboardPageHeader from '@components/dashboard/page-header/DashboardPageHeader.vue';
 
-import FarmerForm from './components/FarmerForm.vue';
+import StaffCreateForm from './components/create-form/StaffCreateForm.vue';
+
+const router = useRouter();
 </script>
 
 <template>
-  <DashboardPageHeader title="New Farmer" sub-title="Farmers" />
+  <DashboardPageHeader title="New Staff" sub-title="Staffs" />
 
   <div class="card border-0 shadow">
     <div class="card-body">
-      <FarmerForm />
+      <StaffCreateForm @success="() => router.push('/dashboard/staffs')" />
     </div>
   </div>
 </template>
