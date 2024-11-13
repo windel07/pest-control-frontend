@@ -1,3 +1,3 @@
 export interface BarangayDropdownProps {
-  municipality: string;
+  municipality: string | undefined;
 }
