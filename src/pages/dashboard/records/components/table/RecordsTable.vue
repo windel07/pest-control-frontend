@@ -8,7 +8,7 @@ import { MunicipalityDropdown, BarangayDropdown } from '@components/misc';
 
 import RecordsTableDeleteButton from './RecordsTableDeleteButton.vue';
 
-const isFetching = ref<boolean>(false);
+const isFetching = ref<boolean>(true);
 
 const search = ref<string>('');
 const city = ref<string | undefined>(undefined);
@@ -55,64 +55,66 @@ watch(
 </script>
 
 <template>
-  <div class="mb-4 d-flex align-items justify-content-between">
-    <div class="d-flex align-items-center column-gap-2">
-      <BaseInput v-model="search" name="search" placeholder="Search" />
-      <MunicipalityDropdown
-        v-model="city"
-        @input="() => (barangay = undefined)"
-      />
-      <BarangayDropdown v-model="barangay" :municipality="city" />
+  <div v-loading="isFetching">
+    <div class="mb-4 d-flex align-items justify-content-between">
+      <div class="d-flex align-items-center column-gap-2">
+        <BaseInput v-model="search" name="search" placeholder="Search" />
+        <MunicipalityDropdown
+          v-model="city"
+          @input="() => (barangay = undefined)"
+        />
+        <BarangayDropdown v-model="barangay" :municipality="city" />
+      </div>
+
+      <slot name="top-bar:right" />
     </div>
 
-    <slot name="top-bar:right" />
-  </div>
-
-  <div v-loading="isFetching" class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Pest Type</th>
-          <th>Soil Type</th>
-          <th>Municipality</th>
-          <th>Barangay</th>
-          <th>Image</th>
-          <th>Date</th>
-          <th width="100" class="position-sticky end-0"></th>
-        </tr>
-      </thead>
-      <tbody class="table-group-divider">
-        <template v-if="!!records.length">
-          <tr v-for="record in records">
-            <td>{{ record.pest_type }}</td>
-            <td>{{ record.soil_type }}</td>
-            <td>{{ record.city }}</td>
-            <td>{{ record.barangay }}</td>
-            <td></td>
-            <td>{{ record.created_at }}</td>
-            <td class="position-sticky end-0">
-              <div class="d-flex align-items-center justify-content-center">
-                <RouterLink
-                  :to="`/dashboard/records/${record.id}`"
-                  class="btn btn-link px-2"
-                >
-                  <i class="bi bi-pencil"></i>
-                </RouterLink>
-
-                <RecordsTableDeleteButton
-                  :id="record.id"
-                  @success="handleFetch"
-                />
-              </div>
-            </td>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Pest Type</th>
+            <th>Soil Type</th>
+            <th>Municipality</th>
+            <th>Barangay</th>
+            <th>Image</th>
+            <th>Date</th>
+            <th width="100" class="position-sticky end-0"></th>
           </tr>
-        </template>
-        <tr v-else>
-          <td colspan="7" class="text-center">No records found.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody class="table-group-divider">
+          <template v-if="!!records.length">
+            <tr v-for="record in records">
+              <td>{{ record.pest_type }}</td>
+              <td>{{ record.soil_type }}</td>
+              <td>{{ record.city }}</td>
+              <td>{{ record.barangay }}</td>
+              <td></td>
+              <td>{{ record.created_at }}</td>
+              <td class="position-sticky end-0">
+                <div class="d-flex align-items-center justify-content-center">
+                  <RouterLink
+                    :to="`/dashboard/records/${record.id}`"
+                    class="btn btn-link px-2"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </RouterLink>
 
-  <BasePagination v-model="page" :per-page="perPage" :total="total" />
+                  <RecordsTableDeleteButton
+                    :id="record.id"
+                    @success="handleFetch"
+                  />
+                </div>
+              </td>
+            </tr>
+          </template>
+          <tr v-else>
+            <td colspan="7" class="text-center">No records found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <BasePagination v-model="page" :per-page="perPage" :total="total" />
+  </div>
 </template>
