@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { ref, onMounted } from 'vue';
 import { computedAsync } from '@vueuse/core';
 
 import type { User } from '@types';
@@ -8,26 +9,36 @@ import type { UserFieldProps } from './UserDropdown.types';
 
 const props = defineProps<UserFieldProps>();
 
-const { data, execute: runFetch } = UserService.list(
-  { role: props.role },
-  false,
-);
+const isFetching = ref<boolean>(false);
 
-const options = computedAsync(async () => {
-  await runFetch();
+const options = ref<Record<string, string>[]>([]);
 
-  const { data: records } = data.value || {};
-  const { data: users } = records || {};
+const handleFetch = async () => {
+  isFetching.value = true;
 
-  return Array.from(users, (user: User) => ({
+  const { data } = await UserService.list(
+    () => `role=${props.role}&per_page=1000`,
+  );
+  const { data: results } = data.value || {};
+
+  isFetching.value = false;
+
+  options.value = results.data.map((user: User) => ({
     text: user.name,
     value: user.id,
   }));
-}, []);
+};
+
+onMounted(handleFetch);
 </script>
 
 <template>
-  <BaseSelect :options="options" name="user_id" :label="props.label || 'User'">
+  <BaseSelect
+    v-loading="isFetching"
+    :options="options"
+    name="user_id"
+    :label="props.label || 'User'"
+  >
     <template v-slot:first>
       <option :value="undefined" disabled>
         Select {{ props.label || 'User' }}
