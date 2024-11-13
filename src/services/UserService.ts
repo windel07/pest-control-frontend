@@ -1,18 +1,19 @@
+import type { MaybeRefOrGetter } from 'vue';
+import { toValue } from 'vue';
+
 import type { User } from '@types';
 import { APIService } from '@services';
 
 export const UserService = {
   getCurrentUser: () => APIService.get('/api/user'),
 
-  list: (params: User<string, string | number>, immediate: boolean = true) => {
-    const qs = Object.entries(params)
-      .map(([key, value]) => `${key}=${value}`)
-      .join('&');
+  list: (payload?: MaybeRefOrGetter<string>, immediate: boolean = true) => {
+    if (!!payload)
+      return APIService.get(() => `/api/users/?${toValue(payload)}`, {
+        immediate,
+      }).json();
 
-    return APIService.get(() => `/api/users/?${qs}`, {
-      params,
-      immediate,
-    }).json();
+    return APIService.get('/api/users/', { immediate }).json();
   },
   create: (newUser: User, immediate: boolean = true) =>
     APIService.post('/api/users/', newUser, { immediate }).json(),

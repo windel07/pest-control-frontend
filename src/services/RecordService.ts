@@ -1,20 +1,17 @@
+import type { MaybeRefOrGetter } from 'vue';
+import { toValue } from 'vue';
+
 import type { Record } from '@types';
 import { APIService } from '@services';
 
 export const RecordService = {
-  list: (
-    params: Record<string, string | number>,
-    immediate: boolean = true,
-  ) => {
-    console.log({ params });
-    const qs = Object.entries(params)
-      .map(([key, value]) => `${key}=${value}`)
-      .join('&');
+  list: (payload?: MaybeRefOrGetter<string>, immediate: boolean = true) => {
+    if (!!payload)
+      return APIService.get(() => `/api/records/?${toValue(payload)}`, {
+        immediate,
+      }).json();
 
-    return APIService.get(() => `/api/records/?${qs}`, {
-      params,
-      immediate,
-    }).json();
+    return APIService.get('/api/records/', { immediate }).json();
   },
   create: (newRecord: Record) =>
     APIService.post('/api/records/', newRecord).json(),
