@@ -22,14 +22,9 @@ const options = computed<Record<string, string>>(() => {
 </script>
 
 <template>
-  <BaseSelect
-    :options="options"
-    :disabled="!options.length"
-    name="barangay"
-    label="Barangay"
-  >
+  <BaseSelect :options="options" :disabled="!options.length" name="barangay">
     <template v-slot:first>
-      <option :value="undefined" disabled>Select Barangay</option>
+      <option :value="undefined">Select Barangay</option>
     </template>
   </BaseSelect>
 </template>
