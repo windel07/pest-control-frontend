@@ -1,34 +1,55 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
+import { chunk } from 'lodash-es';
 
 import type { BasePaginationProps } from './BasePagination.types';
 
 const props = defineProps<BasePaginationProps>();
 
-const page = defineModel<number>({ default: 1 });
+const current = defineModel<number>({ default: 1 });
 
-const items = computed<number[]>(() => {
-  const count: number = Math.ceil(props.total / (props.perPage || 10));
+const count = computed<number>(() =>
+  Math.ceil(props.total / (props.perPage || 10)),
+);
 
-  return Array.from({ length: count }, (_, index) => index + 1);
+const pages = computed<number[]>(() => {
+  const pages: number[][] = chunk(
+    Array.from({ length: count.value }, (_, index) => index + 1),
+    5,
+  );
+
+  const index = pages.findIndex(
+    (chunk: number[]) => 0 <= chunk.indexOf(current.value),
+  );
+
+  return pages[index] || [];
 });
 </script>
 
 <template>
   <nav aria-label="Page navigation example">
     <ul class="pagination my-2 justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link">Previous</a>
+      <li class="page-item" :class="{ disabled: 1 === current }">
+        <a class="page-link" role="button" @click="() => (current -= 1)"
+          >Previous</a
+        >
       </li>
 
-      <li v-for="item in items" class="page-item">
-        <a class="page-link" :class="{ active: item === page }" href="#">
+      <li v-for="item in pages" class="page-item">
+        <a
+          class="page-link"
+          :class="{ active: item === current }"
+          role="button"
+          @click="() => (current = item)"
+        >
           {{ item }}
         </a>
       </li>
 
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+      <li class="page-item" :class="{ disabled: current === count }">
+        <a class="page-link" role="button" @click="() => (current += 1)"
+          >Next</a
+        >
       </li>
     </ul>
   </nav>
