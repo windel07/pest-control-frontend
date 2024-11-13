@@ -14,7 +14,7 @@ const search = ref<string>('');
 const users = ref<User[]>([]);
 
 const page = ref<number>(1);
-const perPage = ref<number>(5);
+const perPage = ref<number>(10);
 const total = ref<number>(0);
 
 const parameters = computed<string>(() => {
@@ -39,7 +39,7 @@ const handleFetch = async () => {
   users.value = results.data || [];
 
   page.value = results.current_page || 1;
-  perPage.value = results.per_page || 5;
+  perPage.value = results.per_page || 10;
   total.value = results.total || 0;
 };
 
