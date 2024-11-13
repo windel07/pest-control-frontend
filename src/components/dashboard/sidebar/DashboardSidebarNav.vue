@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 
+import { useToast } from '@composables';
 import { useAuthStore } from '@stores';
+
+const { showConfirmToast } = useToast();
 
 const router = useRouter();
 
 const authStore = useAuthStore();
 
 const handleLogout = async () => {
+  const { isConfirmed } = await showConfirmToast(
+    'Logout',
+    'Are you sure you want to log out?',
+  );
+
+  if (!isConfirmed) return;
+
   await authStore.logout();
 
   router.push('/');
