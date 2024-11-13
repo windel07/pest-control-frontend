@@ -1,4 +1,4 @@
 export interface BasePaginationProps {
-  batch: number;
+  perPage: number;
   total: number;
 }

@@ -8,7 +8,7 @@ const props = defineProps<BasePaginationProps>();
 const page = defineModel<number>({ default: 1 });
 
 const items = computed<number[]>(() => {
-  const count: number = Math.ceil(props.total / (props.batch || 10));
+  const count: number = Math.ceil(props.total / (props.perPage || 10));
 
   return Array.from({ length: count }, (_, index) => index + 1);
 });
