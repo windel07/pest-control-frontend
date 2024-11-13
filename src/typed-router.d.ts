@@ -30,6 +30,7 @@ declare module 'vue-router/auto-routes' {
     '/dashboard/records/': RouteRecordInfo<'/dashboard/records/', '/dashboard/records', Record<never, never>, Record<never, never>>,
     '/dashboard/records/[id]': RouteRecordInfo<'/dashboard/records/[id]', '/dashboard/records/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/dashboard/records/components/create-form/RecordCreateForm': RouteRecordInfo<'/dashboard/records/components/create-form/RecordCreateForm', '/dashboard/records/components/create-form/RecordCreateForm', Record<never, never>, Record<never, never>>,
+    '/dashboard/records/components/export-button/RecordsExportButton': RouteRecordInfo<'/dashboard/records/components/export-button/RecordsExportButton', '/dashboard/records/components/export-button/RecordsExportButton', Record<never, never>, Record<never, never>>,
     '/dashboard/records/components/table/RecordsTable': RouteRecordInfo<'/dashboard/records/components/table/RecordsTable', '/dashboard/records/components/table/RecordsTable', Record<never, never>, Record<never, never>>,
     '/dashboard/records/components/table/RecordsTableDeleteButton': RouteRecordInfo<'/dashboard/records/components/table/RecordsTableDeleteButton', '/dashboard/records/components/table/RecordsTableDeleteButton', Record<never, never>, Record<never, never>>,
     '/dashboard/records/components/update-form/RecordUpdateForm': RouteRecordInfo<'/dashboard/records/components/update-form/RecordUpdateForm', '/dashboard/records/components/update-form/RecordUpdateForm', Record<never, never>, Record<never, never>>,
