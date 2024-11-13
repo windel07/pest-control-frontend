@@ -9,7 +9,7 @@ import StaffsTable from './components/table/StaffsTable.vue';
 
   <div class="card border-0 shadow">
     <div class="card-body">
-      <StaffsTable class="mt-4">
+      <StaffsTable>
         <template v-slot:top-bar:right>
           <RouterLink to="/dashboard/staffs/new/" class="btn btn-primary"
             >Add New</RouterLink
