@@ -55,8 +55,8 @@ const onSubmit = handleSubmit(async (formData) => {
       <UserDropdown label="Farmer" role="farmer" />
       <BaseInput name="pest_type" label="Pest type" />
       <BaseInput name="soil_type" label="Soil type" />
-      <MunicipalityDropdown />
-      <BarangayDropdown :municipality="values?.city" />
+      <MunicipalityDropdown label="City" />
+      <BarangayDropdown :municipality="values?.city" label="Barangay" />
     </div>
 
     <BaseButton type="submit" class="mt-3">Submit</BaseButton>
