@@ -31,7 +31,7 @@ const pages = computed<number[]>(() => {
     <ul class="pagination my-2 justify-content-center">
       <li class="page-item" :class="{ disabled: 1 === current }">
         <a class="page-link" role="button" @click="() => (current -= 1)"
-          >Previous</a
+          ><i class="bi bi-caret-left me-1"></i>Previous</a
         >
       </li>
 
@@ -48,8 +48,8 @@ const pages = computed<number[]>(() => {
 
       <li class="page-item" :class="{ disabled: current === count }">
         <a class="page-link" role="button" @click="() => (current += 1)"
-          >Next</a
-        >
+          >Next<i class="bi bi-caret-right ms-1"></i
+        ></a>
       </li>
     </ul>
   </nav>

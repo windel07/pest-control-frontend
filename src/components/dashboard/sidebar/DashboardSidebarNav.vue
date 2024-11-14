@@ -1,51 +1,27 @@
-<script setup lang="ts">
-import { useRouter } from 'vue-router';
-
-import { useToast } from '@composables';
-import { useAuthStore } from '@stores';
-
-const { showConfirmToast } = useToast();
-
-const router = useRouter();
-
-const authStore = useAuthStore();
-
-const handleLogout = async () => {
-  const { isConfirmed } = await showConfirmToast(
-    'Logout',
-    'Are you sure you want to log out?',
-  );
-
-  if (!isConfirmed) return;
-
-  await authStore.logout();
-
-  router.push('/');
-};
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="nav-wrapper overflow-x-hidden overflow-y-auto">
-    <ul class="nav flex-column">
+    <ul class="nav nav-pills border-0 flex-column row-gap-5">
       <li class="nav-item">
-        <RouterLink to="/dashboard/records" class="nav-link"
-          >Records</RouterLink
+        <RouterLink
+          to="/dashboard/records"
+          class="nav-link border-start border-4 border-light text-start d-flex align-items-center"
+          ><i class="bi bi-file-earmark-text me-3 fs-4"></i>Records</RouterLink
         >
       </li>
       <li class="nav-item">
-        <RouterLink to="/dashboard/farmers" class="nav-link"
-          >Farmers</RouterLink
+        <RouterLink
+          to="/dashboard/farmers"
+          class="nav-link border-start border-4 border-light text-start d-flex align-items-center"
+          ><i class="bi bi-sun me-3 fs-4"></i>Farmers</RouterLink
         >
       </li>
       <li class="nav-item">
-        <RouterLink to="/dashboard/staffs" class="nav-link">Staffs</RouterLink>
-      </li>
-    </ul>
-
-    <ul class="nav mt-auto flex-column">
-      <li class="nav-item">
-        <a class="nav-link" role="button" @click.prevent="handleLogout"
-          >Logout</a
+        <RouterLink
+          to="/dashboard/staffs"
+          class="nav-link border-start border-4 border-light text-start d-flex align-items-center"
+          ><i class="bi bi-people me-3 fs-4"></i>Staffs</RouterLink
         >
       </li>
     </ul>
@@ -55,5 +31,10 @@ const handleLogout = async () => {
 <style scoped>
 .nav-wrapper {
   height: calc(100vh - 3.75rem - 1px);
+}
+
+.nav-wrapper :deep(.active),
+.nav-wrapper .nav-link:hover {
+  border-left: 4px solid !important;
 }
 </style>

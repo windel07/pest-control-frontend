@@ -11,8 +11,10 @@ import StaffsTable from './components/table/StaffsTable.vue';
     <div class="card-body">
       <StaffsTable>
         <template v-slot:top-bar:right>
-          <RouterLink to="/dashboard/staffs/new/" class="btn btn-primary"
-            >Add New</RouterLink
+          <RouterLink
+            to="/dashboard/staffs/new/"
+            class="btn btn-primary text-light"
+            ><i class="bi bi-plus-lg me-3"></i>Add New</RouterLink
           >
         </template>
       </StaffsTable>

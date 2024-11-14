@@ -20,6 +20,7 @@ const {
   size,
   type,
   wrapperClass,
+  icon,
 } = defineProps<BaseInputProps>();
 
 const {
@@ -35,6 +36,7 @@ const isHidden = computed<boolean>(() => 'hidden' === type);
 
 const inputClasses = computed<Record<string, boolean>>(() => ({
   [`form-control-${size}`]: !!size,
+  [`ps-8`]: !!icon,
   'is-invalid': !!errorMessage.value,
 }));
 
@@ -51,21 +53,29 @@ defineOptions({
       </slot>
     </label>
 
-    <input
-      v-bind="$attrs"
-      v-model="inputValue"
-      class="form-control"
-      :id="inputId"
-      :class="inputClasses"
-      :name="name"
-      :disabled="disabled"
-      :placeholder="placeholder"
-      :type="type || 'text'"
-      :aria-describedby="!!helpText ? helpTextId : undefined"
-      :aria-labelledby="!!label ? inputId : undefined"
-      @input="handleChange"
-      @blur="handleBlur"
-    />
+    <div class="position-relative">
+      <i
+        v-if="!!icon"
+        :class="`bi-${icon}`"
+        class="bi ms-3 position-absolute top-50 start-0 translate-middle-y text-secondary"
+      ></i>
+
+      <input
+        v-bind="$attrs"
+        v-model="inputValue"
+        class="form-control"
+        :id="inputId"
+        :class="inputClasses"
+        :name="name"
+        :disabled="disabled"
+        :placeholder="placeholder"
+        :type="type || 'text'"
+        :aria-describedby="!!helpText ? helpTextId : undefined"
+        :aria-labelledby="!!label ? inputId : undefined"
+        @input="handleChange"
+        @blur="handleBlur"
+      />
+    </div>
 
     <div v-if="!!helpText" :id="helpTextId" class="form-text">
       {{ helpText }}

@@ -29,7 +29,7 @@ const isLoading = computed<boolean>(() => props.loading || isSubmitting.value);
         {{ errors.nonFieldErrors }}
       </BaseAlert>
 
-      <div class="d-grid row-gap-3">
+      <div class="d-grid row-gap-5">
         <slot />
       </div>
 

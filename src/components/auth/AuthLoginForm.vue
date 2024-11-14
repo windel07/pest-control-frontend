@@ -32,9 +32,11 @@ const onSubmit = handleSubmit(async ({ email, password }) => {
 </script>
 
 <template>
-  <form @submit="onSubmit" class="d-grid row-gap-3">
-    <BaseInput name="email" label="Email address" />
-    <BaseInput name="password" label="Password" type="password" />
-    <BaseButton type="submit">Submit</BaseButton>
+  <form @submit="onSubmit" class="d-grid">
+    <BaseInput name="email" label="Email address" class="mb-4" />
+    <BaseInput name="password" label="Password" type="password" class="mb-7" />
+    <BaseButton type="submit" class="btn btn-primary text-light"
+      >Submit</BaseButton
+    >
   </form>
 </template>

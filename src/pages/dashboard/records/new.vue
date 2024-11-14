@@ -18,9 +18,11 @@ const router = useRouter();
 
   <DashboardPageHeader title="New Record" sub-title="Records" />
 
-  <div class="card border-0 shadow">
-    <div class="card-body">
-      <RecordCreateForm @success="() => router.push('/dashboard/records/')" />
+  <div class="d-grid col-6">
+    <div class="card border-0 shadow">
+      <div class="card-body py-6 px-8">
+        <RecordCreateForm @success="() => router.push('/dashboard/records/')" />
+      </div>
     </div>
   </div>
 </template>

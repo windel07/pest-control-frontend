@@ -7,7 +7,8 @@ $bootstrap-icons-font-dir: '@/../node_modules/bootstrap-icons/font/fonts';
 
 // Typography
 
-$font-family-base: 'Poppins', sans-serif;
+$headings-font-family: 'Raleway', sans-serif;
+$font-family-base: 'Lato', sans-serif;
 $font-size-base: 0.85rem;
 
 // Components
@@ -37,3 +38,82 @@ $carousel-indicator-width: 12px;
 $carousel-indicator-height: 12px;
 
 $carousel-indicator-spacer: 6px;
+
+// Color
+
+$primary: #68c893;
+$secondary: #929dab;
+$tertiary: #f4f4f4;
+$light: #ffffff;
+$dark: #25292c;
+
+// Componenets
+
+$focus-ring-opacity: 0.25 !default;
+$focus-ring-color: rgba($secondary, $focus-ring-opacity) !default;
+
+// Spacing
+
+$spacer: 15px;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.33333333333333333333333333333333,
+  2: $spacer * 0.66666666666666666666666666666667,
+  3: $spacer,
+  4: $spacer * 1.33333333333333333333333333333333,
+  5: $spacer * 1.66666666666666666666666666666667,
+  6: $spacer * 2,
+  7: $spacer * 2.33333333333,
+  8: $spacer * 2.66666666667,
+  9: $spacer * 3,
+  10: $spacer * 3.33333333333,
+  11: $spacer * 3.66666666667,
+  12: $spacer * 4,
+);
+
+// Buttons + Forms
+
+$input-btn-padding-y: 8px;
+$input-btn-padding-x: 20px;
+$input-btn-font-size: 15px;
+$input-btn-pagination-border-radius: 10px !default;
+
+// Buttons
+
+$btn-font-size: 15px;
+$btn-font-weight: 700;
+$btn-border-radius: $input-btn-pagination-border-radius;
+
+// Forms
+
+/* $form-label-color: $secondary; */
+$form-label-font-size: 16px;
+$form-label-margin-bottom: 15px;
+
+$input-bg: $tertiary;
+$input-color: $dark;
+$input-border-color: $tertiary;
+$input-border-radius: $input-btn-pagination-border-radius;
+$input-focus-border-color: $tertiary;
+$input-placeholder-color: $secondary;
+
+// Navs
+
+$nav-link-color: $secondary;
+$nav-link-padding-y: 0.5rem;
+$nav-link-padding-x: 25px;
+$nav-link-font-size: 16px;
+$nav-link-font-weight: 700;
+$nav-link-hover-color: $primary;
+
+$nav-pills-border-radius: 0px;
+$nav-pills-link-active-color: $primary;
+$nav-pills-link-active-bg: $light;
+
+// Pagination
+
+$pagination-border-radius: $input-btn-pagination-border-radius;
+$pagination-border-color: $primary;
+
+$pagination-hover-color: $secondary;
+$pagination-hover-border-color: $primary;

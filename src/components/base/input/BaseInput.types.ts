@@ -27,4 +27,5 @@ export interface BaseInputProps {
   disabled?: boolean;
   helpText?: string;
   wrapperClass?: string | string[];
+  icon?: string;
 }

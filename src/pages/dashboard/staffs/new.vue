@@ -18,8 +18,8 @@ const router = useRouter();
 
   <DashboardPageHeader title="New Staff" sub-title="Staffs" />
 
-  <div class="card border-0 shadow">
-    <div class="card-body">
+  <div class="card col-6 border-0 shadow">
+    <div class="card-body py-6 px-8">
       <StaffCreateForm @success="() => router.push('/dashboard/staffs')" />
     </div>
   </div>

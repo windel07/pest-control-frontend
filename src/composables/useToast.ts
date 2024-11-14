@@ -4,11 +4,11 @@ import { BootstrapVariant } from '@types';
 
 const BASE_CUSTOM_CLASSES = {
   htmlContainer:
-    'bg-opacity-10 py-2 px-3 m-0 fs-6 d-flex align-items-center justify-content-start',
-  cancelButton: 'btn btn-outline-secondary btn-sm m-0',
-  confirmButton: 'btn btn-primary btn-sm m-0 order-1',
-  popup: `p-0 shadow`,
-  title: 'pt-2',
+    'bg-opacity-10 m-0 mb-4 p-0 fs-6 d-flex align-items-center justify-content-start',
+  cancelButton: 'btn btn-outline-primary btn-sm m-0 fs-6',
+  confirmButton: 'btn btn-primary btn-sm m-0 order-1 fs-6',
+  popup: `py-4 px-6 shadow`,
+  title: 'pt-2 text-dark fs-5 m-0 mb-4',
 };
 
 export const useToast = () => {
@@ -19,6 +19,7 @@ export const useToast = () => {
     showConfirmButton: false,
     timer: 3000,
     toast: true,
+    width: 380,
   });
 
   const showToast = (
@@ -50,7 +51,7 @@ export const useToast = () => {
         ...BASE_CUSTOM_CLASSES,
         htmlContainer: `bg-${variant} ${BASE_CUSTOM_CLASSES.htmlContainer}`,
         actions:
-          'py-2 px-3 m-0 d-flex align-items-center justify-content-end column-gap-2',
+          'p-0 m-0 d-flex align-items-center justify-content-end column-gap-2',
       },
     });
 

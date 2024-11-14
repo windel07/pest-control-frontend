@@ -11,8 +11,10 @@ import FarmersTable from './components/table/FarmersTable.vue';
     <div class="card-body">
       <FarmersTable>
         <template v-slot:top-bar:right>
-          <RouterLink to="/dashboard/farmers/new/" class="btn btn-primary"
-            >Add New</RouterLink
+          <RouterLink
+            to="/dashboard/farmers/new/"
+            class="btn btn-primary text-light"
+            ><i class="bi bi-plus-lg me-3"></i>Add New</RouterLink
           >
         </template>
       </FarmersTable>

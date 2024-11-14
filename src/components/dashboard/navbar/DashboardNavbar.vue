@@ -1,23 +1,17 @@
 <script setup lang="ts">
-import DashboardSidebarLogo from './DashboardSidebarLogo.vue';
-import DashboardSidebarNav from './DashboardSidebarNav.vue';
+import DashboardNavbarNav from './DashboardNavbarNav.vue';
 </script>
 
 <template>
-  <aside
-    class="dashboard-sidebar col-12 col-md-3 col-lg-2 bg-white p-0 pt-4 position-fixed rounded-2"
+  <above
+    class="dashboard-navbar navbar fixed-top justify-content-end py-2 px-3 rounded-2"
   >
-    <DashboardSidebarLogo />
-    <DashboardSidebarNav />
-  </aside>
+    <DashboardNavbarNav />
+  </above>
 </template>
 
 <style scoped>
-.dashboard-sidebar {
-  top: 30px;
-  left: 25px;
-  bottom: 30px;
-  z-index: 1070;
+.dashboard-navbar {
   will-change: transform;
   transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;

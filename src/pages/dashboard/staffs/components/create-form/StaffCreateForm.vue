@@ -36,10 +36,12 @@ const onSubmit = handleSubmit(async (formData) => {
 
 <template>
   <BaseForm @submit.prevent="onSubmit">
-    <div class="d-grid row-gap-2">
+    <div class="d-grid row-gap-4">
+      <div class="row row-cols-2">
+        <BaseInput name="first_name" label="First name" />
+        <BaseInput name="last_name" label="Last name" />
+      </div>
       <BaseInput name="email_address" label="Email address" />
-      <BaseInput name="first_name" label="First name" />
-      <BaseInput name="last_name" label="Last name" />
       <BaseInput name="phone" label="Phone" />
     </div>
 

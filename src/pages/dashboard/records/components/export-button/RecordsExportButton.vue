@@ -18,5 +18,7 @@ const handleExport = async () => {
 </script>
 
 <template>
-  <BaseButton :loading="isExporting" @click="handleExport">Export</BaseButton>
+  <BaseButton :loading="isExporting" @click="handleExport" class="text-light"
+    ><i class="bi bi-file-earmark-arrow-down me-3"></i>Export</BaseButton
+  >
 </template>

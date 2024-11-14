@@ -35,12 +35,17 @@ const onSubmit = handleSubmit(async (formData) => {
 
 <template>
   <BaseForm @submit.prevent="onSubmit">
-    <div class="d-grid row-gap-2">
+    <div class="d-grid row-gap-4">
       <UserDropdown label="Farmer" role="farmer" />
-      <BaseInput name="pest_type" label="Pest type" />
-      <BaseInput name="soil_type" label="Soil type" />
-      <MunicipalityDropdown label="City" />
-      <BarangayDropdown :municipality="values?.city" label="Barangay" />
+      <div class="row row-cols-2">
+        <BaseInput name="pest_type" label="Pest type" />
+        <BaseInput name="soil_type" label="Soil type" />
+      </div>
+
+      <div class="row row-cols-2">
+        <BarangayDropdown :municipality="values?.city" label="Barangay" />
+        <MunicipalityDropdown label="City" />
+      </div>
     </div>
 
     <BaseButton type="submit" class="mt-3">Submit</BaseButton>

@@ -58,7 +58,12 @@ watch(
   <div v-loading="isFetching">
     <div class="mb-4 d-flex align-items justify-content-between">
       <div class="d-flex align-items-center column-gap-2">
-        <BaseInput v-model="search" name="search" placeholder="Search" />
+        <BaseInput
+          v-model="search"
+          name="search"
+          placeholder="Search"
+          icon="search"
+        />
         <MunicipalityDropdown
           v-model="city"
           @input="() => (barangay = undefined)"

@@ -15,8 +15,10 @@ import RecordsExportButton from './components/export-button/RecordsExportButton.
           <div class="d-flex align-items-center column-gap-2">
             <RecordsExportButton />
 
-            <RouterLink to="/dashboard/records/new/" class="btn btn-primary"
-              >Add New</RouterLink
+            <RouterLink
+              to="/dashboard/records/new/"
+              class="btn btn-primary text-light"
+              ><i class="bi bi-plus-lg me-"></i>Add New</RouterLink
             >
           </div>
         </template>
