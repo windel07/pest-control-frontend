@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { saveAs } from 'file-saver';
+import { PhExport } from '@phosphor-icons/vue';
 
 import { RecordService } from '@services';
 
@@ -18,7 +19,10 @@ const handleExport = async () => {
 </script>
 
 <template>
-  <BaseButton :loading="isExporting" @click="handleExport" class="text-light"
-    ><i class="bi bi-file-earmark-arrow-down me-3"></i>Export</BaseButton
+  <BaseButton
+    :loading="isExporting"
+    @click="handleExport"
+    class="text-light d-flex align-items-center"
+    ><PhExport :size="20" class="me-3" />Export</BaseButton
   >
 </template>
