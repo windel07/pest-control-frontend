@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { PhArrowLeft } from '@phosphor-icons/vue';
 
 import DashboardPageHeader from '@components/dashboard/page-header/DashboardPageHeader.vue';
 
@@ -13,16 +14,20 @@ const id = computed<number>(() => parseInt(route.params.id as string));
 </script>
 
 <template>
-  <div class="mt-3 mb-1">
-    <RouterLink to="/dashboard/staffs/" class="small lh-1 d-inline-flex">
-      <i class="bi bi-arrow-left me-2"></i>
-      <span>Return</span>
-    </RouterLink>
+  <div class="mt-3">
+    <BaseButton
+      type="button"
+      class="d-inline-flex p-2"
+      @click="() => router.push('/dashboard/staffs/')"
+      z
+    >
+      <PhArrowLeft :size="22" />
+    </BaseButton>
   </div>
 
   <DashboardPageHeader title="Update Staff" sub-title="Staffs" />
 
-  <div class="card border-0 shadow">
+  <div class="card border-0">
     <div class="card-body">
       <StaffUpdateForm
         :id="id"
