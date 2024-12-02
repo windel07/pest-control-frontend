@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { PhPlus } from '@phosphor-icons/vue';
+
 import DashboardPageHeader from '@components/dashboard/page-header/DashboardPageHeader.vue';
 
 import RecordsTable from './components/table/RecordsTable.vue';
@@ -9,7 +11,7 @@ import RecordsExportButton from './components/export-button/RecordsExportButton.
   <DashboardPageHeader title="All Records" sub-title="Records" />
 
   <div class="card border-0 shadow">
-    <div class="card-body">
+    <div class="card-body p-5">
       <RecordsTable>
         <template v-slot:top-bar:right>
           <div class="d-flex align-items-center column-gap-2">
@@ -17,8 +19,8 @@ import RecordsExportButton from './components/export-button/RecordsExportButton.
 
             <RouterLink
               to="/dashboard/records/new/"
-              class="btn btn-primary text-light"
-              ><i class="bi bi-plus-lg me-"></i>Add New</RouterLink
+              class="btn btn-primary text-light d-flex align-items-center"
+              ><PhPlus :size="20" class="me-2" />Add New</RouterLink
             >
           </div>
         </template>
