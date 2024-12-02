@@ -7,17 +7,34 @@ import AuthLoginForm from '@components/auth/AuthLoginForm.vue';
     class="vh-100 d-flex flex-column align-items-center justify-content-center"
   >
     <div class="container">
-      <h1 class="mb-5 text-center text-dark fw-bold">Login</h1>
+      <div class="text-center">
+        <img
+          src="../assets/images/farmer.webp"
+          alt="Farmer"
+          width="350px"
+          height="350px"
+          class="mb-5"
+        />
+
+        <h1 class="text-dark fw-bold">Welcome !</h1>
+        <p class="">Login to continue</p>
+      </div>
 
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-5">
-          <div class="card border-0 shadow">
-            <div class="card-body py-6 px-8">
-              <AuthLoginForm />
-            </div>
-          </div>
+          <AuthLoginForm />
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+h1 {
+  letter-spacing: 1px;
+}
+
+p {
+  letter-spacing: 2px;
+}
+</style>

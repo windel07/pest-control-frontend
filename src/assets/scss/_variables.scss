@@ -7,7 +7,7 @@ $bootstrap-icons-font-dir: '@/../node_modules/bootstrap-icons/font/fonts';
 
 // Typography
 
-$headings-font-family: 'Raleway', sans-serif;
+$headings-font-family: 'Poppins', sans-serif;
 $font-family-base: 'Lato', sans-serif;
 $font-size-base: 0.85rem;
 
@@ -39,18 +39,31 @@ $carousel-indicator-height: 12px;
 
 $carousel-indicator-spacer: 6px;
 
-// Color
+// Color System
 
 $primary: #5a7a39;
 $secondary: #929dab;
 $tertiary: #f4f4f4;
 $light: #ffffff;
 $dark: #25292c;
+$danger: #fa003f;
+$gray: #f1f1f1;
 
-// Componenets
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'danger': $danger,
+  'light': $light,
+  'dark': $dark,
+  'gray': $gray,
+);
+
+// Componenets.
+
+$border-radius: 10px;
 
 $focus-ring-opacity: 0.25 !default;
-$focus-ring-color: rgba($secondary, $focus-ring-opacity) !default;
+$focus-ring-color: rgba($primary, $focus-ring-opacity) !default;
 
 // Spacing
 
@@ -73,35 +86,34 @@ $spacers: (
 
 // Buttons + Forms
 
-$input-btn-padding-y: 8px;
-$input-btn-padding-x: 20px;
+$input-btn-padding-y: 12px;
+$input-btn-padding-x: 15px;
 $input-btn-font-size: 15px;
-$input-btn-pagination-border-radius: 6px !default;
+$input-btn-pagination-card-border-radius: 10px !default;
 
 // Buttons
 
 $btn-font-size: 15px;
 $btn-font-weight: 700;
-$btn-border-radius: $input-btn-pagination-border-radius;
+$btn-border-radius: $input-btn-pagination-card-border-radius;
 
 // Forms
 
-/* $form-label-color: $secondary; */
 $form-label-font-size: 16px;
-$form-label-margin-bottom: 15px;
+$form-label-margin-bottom: 10px;
 
 $input-bg: $tertiary;
 $input-color: $dark;
-$input-border-color: $tertiary;
-$input-border-radius: $input-btn-pagination-border-radius;
-$input-focus-border-color: $tertiary;
+$input-border-color: $primary;
+$input-border-radius: $input-btn-pagination-card-border-radius;
+$input-focus-border-color: $primary;
 $input-placeholder-color: $secondary;
 
 // Navs
 
 $nav-link-color: $secondary;
 $nav-link-padding-y: 0.5rem;
-$nav-link-padding-x: 25px;
+$nav-link-padding-x: 20px;
 $nav-link-font-size: 16px;
 $nav-link-font-weight: 700;
 $nav-link-hover-color: $primary;
@@ -112,8 +124,9 @@ $nav-pills-link-active-bg: $light;
 
 // Pagination
 
-$pagination-border-radius: $input-btn-pagination-border-radius;
-$pagination-border-color: $primary;
+$pagination-color: $primary;
+$pagination-border-radius: $input-btn-pagination-card-border-radius;
 
-$pagination-hover-color: $secondary;
-$pagination-hover-border-color: $primary;
+// Cards
+
+$card-border-radius: $input-btn-pagination-card-border-radius;
