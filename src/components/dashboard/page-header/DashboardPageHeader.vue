@@ -25,7 +25,6 @@ const { title, subTitle } = defineProps<Props>();
 }
 
 .page-header .page-subtitle {
-  color: #818ea3;
   letter-spacing: 0.125rem;
   font-size: 0.625rem;
 }
