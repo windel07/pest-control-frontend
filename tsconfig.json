@@ -20,23 +20,11 @@
       "@pages/*": [
         "src/pages/*"
       ],
-      "@app/*": [
-        "src/components/app/*"
-      ],
-      "@auth/*": [
-        "src/components/auth/*"
-      ],
-      "@base/*": [
-        "src/components/base/*"
-      ],
       "@composables/*": [
         "src/composables/*"
       ],
       "@types/*": [
         "src/types/*"
-      ],
-      "@dashboard/*": [
-        "src/components/dashboard/*"
       ],
       "@layouts/*": [
         "src/layouts/*"
@@ -47,14 +35,14 @@
       "@stores/*": [
         "src/stores/*"
       ],
-      "@misc/*": [
-        "src/components/misc/*"
-      ],
       "@datas/*": [
         "src/datas/*"
       ],
       "@directives/*": [
         "src/directives/*"
+      ],
+      "@favicon/*": [
+        "src/assets/favicon/*"
       ]
     }
   }
