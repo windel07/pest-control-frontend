@@ -7,6 +7,14 @@ import AuthLoginForm from '@components/auth/AuthLoginForm.vue';
     class="vh-100 d-flex flex-column align-items-center justify-content-center"
   >
     <div class="container">
+      <img
+        src="@assets/img/logo.png"
+        alt="DripScan"
+        width="125"
+        height="125"
+        class="mx-auto mb-7 d-table"
+      />
+
       <h1 class="mb-5 text-center text-dark fw-bold">Login</h1>
 
       <div class="row justify-content-center">

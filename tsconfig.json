@@ -41,8 +41,11 @@
       "@directives/*": [
         "src/directives/*"
       ],
-      "@favicon/*": [
-        "src/assets/favicon/*"
+      "@New folder/*": [
+        "src/assets/New folder/*"
+      ],
+      "@img/*": [
+        "src/assets/img/*"
       ]
     }
   }
