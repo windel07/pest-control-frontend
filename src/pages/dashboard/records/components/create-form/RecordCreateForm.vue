@@ -23,9 +23,24 @@ const { values, handleSubmit } = useForm<RecordCreateFormSchema>({
   validationSchema,
 });
 
-const onSubmit = handleSubmit(async (formData) => {
-  const { data } = await RecordService.create(formData);
+const onSubmit = handleSubmit(async (submittedData) => {
+  const formData = new FormData();
+
+  formData.append('user_id', submittedData.user_id);
+  formData.append('photo', submittedData.photo);
+  formData.append('pest_type', submittedData.pest_type);
+  formData.append('soil_type', submittedData.soil_type);
+  formData.append('city', submittedData.city);
+  formData.append('barangay', submittedData.barangay);
+
+  const { data, error } = await RecordService.create(formData);
   const { detail } = data.value || {};
+
+  if (!!error.value) {
+    console.log(error.value);
+
+    return;
+  }
 
   showToast(detail, 'success');
 
@@ -36,6 +51,7 @@ const onSubmit = handleSubmit(async (formData) => {
 <template>
   <BaseForm @submit.prevent="onSubmit">
     <div class="d-grid row-gap-4">
+      <BaseInput name="photo" label="Photo" type="file" />
       <UserDropdown label="Farmer" role="farmer" />
       <div class="row row-cols-2">
         <BaseInput name="pest_type" label="Pest type" />
@@ -43,8 +59,8 @@ const onSubmit = handleSubmit(async (formData) => {
       </div>
 
       <div class="row row-cols-2">
-        <BarangayDropdown :municipality="values?.city" label="Barangay" />
         <MunicipalityDropdown label="City" />
+        <BarangayDropdown :municipality="values?.city" label="Barangay" />
       </div>
     </div>
 
