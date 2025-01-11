@@ -42,7 +42,7 @@ const onSubmit = handleSubmit(async (formData) => {
         <BaseInput name="last_name" label="Last name" />
       </div>
 
-      <BaseInput name="email_address" label="Email address" />
+      <BaseInput name="email" label="Email address" />
       <BaseInput name="phone" label="Phone" />
     </div>
 
