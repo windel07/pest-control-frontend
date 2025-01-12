@@ -14,7 +14,9 @@ export const RecordService = {
     return APIService.get('/api/records/', { immediate }).json();
   },
   create: (newRecord: Record) =>
-    APIService.post('/api/records/', newRecord).json(),
+    APIService.post('/api/records/', newRecord, {
+      'Content-Type': 'multipart/form-data',
+    }).json(),
   read: (id: number, immediate: boolean = true) =>
     APIService.get(() => `/api/records/${id}/`, { immediate }).json(),
   update: (id: number, newRecord: Record) =>

@@ -78,6 +78,7 @@ watch(
       <table class="table">
         <thead>
           <tr>
+            <th>Photo</th>
             <th>Pest Type</th>
             <th>Soil Type</th>
             <th>Municipality</th>
@@ -90,6 +91,14 @@ watch(
         <tbody class="table-group-divider">
           <template v-if="!!records.length">
             <tr v-for="record in records">
+              <td>
+                <img
+                  :src="`${record.photo}`"
+                  width="60"
+                  height="60"
+                  class="img-fluid"
+                />
+              </td>
               <td>{{ record.pest_type }}</td>
               <td>{{ record.soil_type }}</td>
               <td>{{ record.city }}</td>
