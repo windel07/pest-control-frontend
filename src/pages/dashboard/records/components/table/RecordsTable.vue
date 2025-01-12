@@ -83,7 +83,6 @@ watch(
             <th>Soil Type</th>
             <th>Municipality</th>
             <th>Barangay</th>
-            <th>Image</th>
             <th>Date</th>
             <th width="100" class="position-sticky end-0"></th>
           </tr>
@@ -103,7 +102,6 @@ watch(
               <td>{{ record.soil_type }}</td>
               <td>{{ record.city }}</td>
               <td>{{ record.barangay }}</td>
-              <td></td>
               <td>{{ record.created_at }}</td>
               <td class="position-sticky end-0">
                 <div class="d-flex align-items-center justify-content-center">
