@@ -13,7 +13,7 @@ export const AuthService = {
   //       password1: password,
   //       password2: password,
   //     }),
-  logout: () => APIService.post('/logout/'),
+  logout: () => APIService.post('/logout'),
   //   changePassword: (oldPassword: string, newPassword: string) =>
   //     APIService.post('/auth/password/change/', {
   //       oldPassword,
