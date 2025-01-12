@@ -1,27 +1,29 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { PhFiles, PhUsers, PhLeaf } from '@phosphor-icons/vue';
+</script>
 
 <template>
   <div class="nav-wrapper overflow-x-hidden overflow-y-auto">
-    <ul class="nav nav-pills border-0 flex-column row-gap-5">
+    <ul class="nav nav-pills border-0 flex-column row-gap-3">
       <li class="nav-item">
         <RouterLink
           to="/dashboard/records"
-          class="nav-link border-start border-4 border-light text-start d-flex align-items-center"
-          ><i class="bi bi-file-earmark-text me-3 fs-4"></i>Records</RouterLink
+          class="nav-link border-start border-3 border-light text-start d-flex align-items-center"
+          ><PhFiles :size="25" class="me-3" /> Records</RouterLink
         >
       </li>
       <li class="nav-item">
         <RouterLink
           to="/dashboard/farmers"
-          class="nav-link border-start border-4 border-light text-start d-flex align-items-center"
-          ><i class="bi bi-sun me-3 fs-4"></i>Farmers</RouterLink
+          class="nav-link border-start border-3 border-light text-start d-flex align-items-center"
+          ><PhLeaf :size="25" class="me-3" /> Farmers</RouterLink
         >
       </li>
       <li class="nav-item">
         <RouterLink
           to="/dashboard/staffs"
-          class="nav-link border-start border-4 border-light text-start d-flex align-items-center"
-          ><i class="bi bi-people me-3 fs-4"></i>Staffs</RouterLink
+          class="nav-link border-start border-3 border-light text-start d-flex align-items-center"
+          ><PhUsers :size="25" class="me-3" /> Staffs</RouterLink
         >
       </li>
     </ul>
@@ -35,6 +37,6 @@
 
 .nav-wrapper :deep(.active),
 .nav-wrapper .nav-link:hover {
-  border-left: 4px solid !important;
+  border-left: 3px solid !important;
 }
 </style>

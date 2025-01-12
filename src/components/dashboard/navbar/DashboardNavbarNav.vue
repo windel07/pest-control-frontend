@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import { PhPower } from '@phosphor-icons/vue';
 
 import { useToast } from '@composables';
 import { useAuthStore } from '@stores';
@@ -29,20 +30,12 @@ const handleLogout = async () => {
     <ul class="nav nav-pills border-0 flex-column row-gap-6">
       <li class="nav-item">
         <a
-          class="btn btn-primary text-light text-start d-flex align-items-center py-1 px-3"
+          class="btn text-primary border-0 p-0 rounded-circle"
           role="button"
           @click.prevent="handleLogout"
-          ><i class="bi bi-power me-2"></i>Logout</a
-        >
+          ><PhPower :size="25" weight="bold" />
+        </a>
       </li>
     </ul>
   </div>
 </template>
-
-<style scoped>
-.nav-wrapper .btn:hover {
-  color: #68c893 !important;
-  background: #ffffff;
-  border-color: #68c893;
-}
-</style>

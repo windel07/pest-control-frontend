@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { chunk } from 'lodash-es';
+import { PhCaretLeft, PhCaretRight } from '@phosphor-icons/vue';
 
 import type { BasePaginationProps } from './BasePagination.types';
 
@@ -30,8 +31,13 @@ const pages = computed<number[]>(() => {
   <nav aria-label="Page navigation example">
     <ul class="pagination my-2 justify-content-center">
       <li class="page-item" :class="{ disabled: 1 === current }">
-        <a class="page-link" role="button" @click="() => (current -= 1)"
-          ><i class="bi bi-caret-left me-1"></i>Previous</a
+        <a
+          class="page-link fw-bold d-flex align-items-center border-0 bg-transparent"
+          role="button"
+          @click="() => (current -= 1)"
+        >
+          <PhCaretLeft :size="14" weight="bold" class="me-1" />
+          Previous</a
         >
       </li>
 
@@ -47,9 +53,12 @@ const pages = computed<number[]>(() => {
       </li>
 
       <li class="page-item" :class="{ disabled: current === count }">
-        <a class="page-link" role="button" @click="() => (current += 1)"
-          >Next<i class="bi bi-caret-right ms-1"></i
-        ></a>
+        <a
+          class="page-link fw-bold d-flex align-items-center border-0 bg-transparent"
+          role="button"
+          @click="() => (current += 1)"
+          >Next <PhCaretRight :size="14" weight="bold" class="ms-1"
+        /></a>
       </li>
     </ul>
   </nav>

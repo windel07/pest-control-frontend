@@ -19,13 +19,19 @@ import AuthLoginForm from '@components/auth/AuthLoginForm.vue';
 
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-5">
-          <div class="card border-0 shadow">
-            <div class="card-body py-6 px-8">
-              <AuthLoginForm />
-            </div>
-          </div>
+          <AuthLoginForm />
         </div>
       </div>
     </div>
   </section>
 </template>
+
+<style scoped>
+h1 {
+  letter-spacing: 1px;
+}
+
+p {
+  letter-spacing: 2px;
+}
+</style>

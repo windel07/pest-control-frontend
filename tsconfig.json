@@ -46,6 +46,9 @@
       ],
       "@img/*": [
         "src/assets/img/*"
+      ],
+      "@images/*": [
+        "src/assets/images/*"
       ]
     }
   }
