@@ -20,9 +20,9 @@ export const RecordService = {
   read: (id: number, immediate: boolean = true) =>
     APIService.get(() => `/api/records/${id}`, { immediate }).json(),
   update: (id: number, newRecord: Record) =>
-    APIService.put('/api/records', id, newRecord).json(),
+    APIService.put('/api/records/', id, newRecord).json(),
   delete: (id: number, immediate: boolean = true) =>
-    APIService.delete('/api/records', id, { immediate }).json(),
+    APIService.delete('/api/records/', id, { immediate }).json(),
   export: (immediate: boolean = true) =>
     APIService.post('/api/records/export', null, { immediate }).blob(),
 };

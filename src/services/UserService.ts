@@ -20,7 +20,7 @@ export const UserService = {
   read: (id: number, immediate: boolean = true) =>
     APIService.get(() => `/api/users/${id}`, { immediate }).json(),
   update: (id: number, updatedUser: User, immediate: boolean = true) =>
-    APIService.put('/api/users', id, updatedUser, { immediate }).json(),
+    APIService.put('/api/users/', id, updatedUser, { immediate }).json(),
   delete: (id: number, immediate: boolean = true) =>
-    APIService.delete('/api/users', id, { immediate }).json(),
+    APIService.delete('/api/users/', id, { immediate }).json(),
 };
