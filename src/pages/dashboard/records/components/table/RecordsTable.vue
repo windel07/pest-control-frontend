@@ -13,12 +13,28 @@ const isFetching = ref<boolean>(true);
 const search = ref<string>('');
 const city = ref<string | undefined>(undefined);
 const barangay = ref<string | undefined>(undefined);
+const month = ref<number>(0);
+const year = ref<number>(new Date().getFullYear());
 
 const records = ref<Record[]>([]);
 
 const page = ref<number>(1);
 const perPage = ref<number>(10);
 const total = ref<number>(0);
+
+const monthOptions = computed<Record<string, any>[]>(() =>
+  Array.from({ length: 12 }, (_, i) => ({
+    value: i + 1,
+    text: new Date(0, i).toLocaleString('en-US', { month: 'long' }),
+  })),
+);
+
+const yearOptions = computed<Record<string, any>[]>(() =>
+  Array.from({ length: new Date().getFullYear() - 1989 }, (_, i) => ({
+    value: 1990 + i,
+    text: 1990 + i,
+  })),
+);
 
 const parameters = computed<string>(() => {
   return Object.entries({
@@ -27,6 +43,8 @@ const parameters = computed<string>(() => {
     barangay: barangay.value,
     page: page.value,
     per_page: perPage.value,
+    month: month.value,
+    year: year.value,
   })
     .map(([key, value]) => `${key}=${value || ''}`)
     .join('&');
@@ -69,6 +87,18 @@ watch(
           @input="() => (barangay = undefined)"
         />
         <BarangayDropdown v-model="barangay" :municipality="city" />
+
+        <BaseSelect v-model="month" :options="monthOptions">
+          <template v-slot:first>
+            <option :value="0" disabled>Filter by month</option>
+          </template>
+        </BaseSelect>
+
+        <BaseSelect v-model="year" :options="yearOptions">
+          <template v-slot:first>
+            <option :value="0" disabled>Filter by year</option>
+          </template>
+        </BaseSelect>
       </div>
 
       <slot name="top-bar:right" />
