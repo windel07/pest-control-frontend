@@ -20,7 +20,7 @@ export const APIService: BaseService<any> = {
     useAPIClient()(() => {
       if (!id) return url;
 
-      return `${url}${id}/`;
+      return `${url}${id}`;
     }, options)
       .put(body)
       .json(),
@@ -33,7 +33,7 @@ export const APIService: BaseService<any> = {
     useAPIClient()(() => {
       if (!id) return url;
 
-      return `${url}${id}/`;
+      return `${url}${id}`;
     }, options)
       .patch(body)
       .json(),
@@ -41,7 +41,7 @@ export const APIService: BaseService<any> = {
     useAPIClient()(() => {
       if (!id) return url;
 
-      return `${url}${id}/`;
+      return `${url}${id}`;
     }, options)
       .delete()
       .json(),
