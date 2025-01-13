@@ -23,6 +23,12 @@ export const RecordService = {
     APIService.put('/api/records/', id, newRecord).json(),
   delete: (id: number, immediate: boolean = true) =>
     APIService.delete('/api/records/', id, { immediate }).json(),
-  export: (immediate: boolean = true) =>
-    APIService.post('/api/records/export', null, { immediate }).blob(),
+  export: (payload?: MaybeRefOrGetter<string>, immediate: boolean = true) => {
+    if (!!payload)
+      return APIService.post(() => `/api/records/export?${toValue(payload)}`, {
+        immediate,
+      }).blob();
+
+    return APIService.post('/api/records/export', null, { immediate }).blob();
+  },
 };

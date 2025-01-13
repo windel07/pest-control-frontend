@@ -101,7 +101,7 @@ watch(
         </BaseSelect>
       </div>
 
-      <slot name="top-bar:right" />
+      <slot name="top-bar:right" v-bind="{ city, barangay, month, year }" />
     </div>
 
     <div class="table-responsive">

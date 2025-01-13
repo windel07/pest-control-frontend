@@ -13,9 +13,9 @@ import RecordsExportButton from './components/export-button/RecordsExportButton.
   <div class="card border-0 shadow">
     <div class="card-body p-5">
       <RecordsTable>
-        <template v-slot:top-bar:right>
+        <template v-slot:top-bar:right="filters">
           <div class="d-flex align-items-center column-gap-2">
-            <RecordsExportButton />
+            <RecordsExportButton v-bind="filters" />
 
             <RouterLink
               to="/dashboard/records/new/"
