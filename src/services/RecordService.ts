@@ -20,7 +20,9 @@ export const RecordService = {
   read: (id: number, immediate: boolean = true) =>
     APIService.get(() => `/api/records/${id}`, { immediate }).json(),
   update: (id: number, newRecord: Record) =>
-    APIService.put('/api/records/', id, newRecord).json(),
+    APIService.post(`/api/records/${id}?_method=PUT`, newRecord, {
+      'Content-Type': 'multipart/form-data',
+    }).json(),
   delete: (id: number, immediate: boolean = true) =>
     APIService.delete('/api/records/', id, { immediate }).json(),
   export: (payload?: MaybeRefOrGetter<string>, immediate: boolean = true) => {

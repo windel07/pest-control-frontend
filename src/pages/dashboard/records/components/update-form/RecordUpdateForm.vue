@@ -43,6 +43,7 @@ const { values, setValues, handleSubmit } = useForm<RecordUpdateFormSchema>({
 const onSubmit = handleSubmit(async (submittedData) => {
   const formData = new FormData();
 
+  formData.append('id', props.id);
   formData.append('user_id', submittedData.user_id);
   formData.append('photo', submittedData.photo);
   formData.append(
