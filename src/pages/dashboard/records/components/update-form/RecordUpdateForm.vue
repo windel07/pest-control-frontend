@@ -78,6 +78,12 @@ const onSubmit = handleSubmit(async (submittedData) => {
 <template>
   <BaseForm :loading="isFetching" @submit.prevent="onSubmit">
     <div class="d-grid row-gap-2">
+      <img
+        :src="values.photo"
+        class="img-fluid mb-3"
+        width="300"
+        height="300"
+      />
       <BaseInput name="photo" label="Photo" type="file" />
       <UserDropdown label="Farmer" role="farmer" />
       <div class="row row-cols-2">
